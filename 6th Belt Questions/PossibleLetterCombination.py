@@ -19,4 +19,5 @@ for i in a:
         for k in char:
             arr2.append(j + k)
     arr1 = arr2
+    arr1.sort()
 print(*arr1)

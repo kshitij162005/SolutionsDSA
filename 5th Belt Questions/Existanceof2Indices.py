@@ -1,16 +1,18 @@
 a = int(input())
 b = list(map(int, input().split()))
 c = int(input())
-d = 1
 
-arr = []
-
-for i in range(a):
-    for j in range(i+1):
-        if i != j and b[i] - b[j] == c:
-            arr.append(1)
-
-if d in arr:
-    print("1")
+if a == 0 or len(b) == 0:
+    print(-1)
 else:
-    print("0")
+    found = False
+    for i in range(a-1):
+        for j in range(i+1):
+            if b[i] + b[j] == c:
+                print(j,i)
+                found = True
+                break
+        if found:
+            break
+    if not found:
+        print(-1)

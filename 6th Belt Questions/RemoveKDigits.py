@@ -1,18 +1,17 @@
-nums = input()
-a = int(input())
-res = []
-for i in nums:
-    if a > 0 and res and res[-1] > i:
-        res.pop()
-        a-=1
-
-    res.append(i)
-
-if a > 0:
-    res = res[:-a]
-
-result = ''.join(res).lstrip('0')
-
-if not result:
-    result = "0"
-print(result)
+def removeKdigits(num, k):
+    stack = []
+    for c in num:
+        while stack and k>0 and stack[-1] > c:
+            stack.pop()
+            k -= 1
+        stack.append(c)
+    while stack and k>0:
+        stack.pop()
+        k -= 1
+    if not stack:
+        return "0"
+    return str(int("".join(stack)))
+num = input()
+k = int(input())
+ans = removeKdigits(num,k)
+print(ans)

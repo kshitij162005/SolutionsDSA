@@ -1,17 +1,17 @@
-a = int(input())
-array = list(map(int, input().split()))
+a = input()
+sub = ['']
 
-subsets = []
-n = len(array)
-for i in range(1 << n): 
-    subset = []
-    for j in range(n):
-        if i & (1 << j):
-            subset.append(array[j])
-    if subset:
-        subsets.append(subset)
+for i in a:
+    sub += [m + i for m in sub]
 
-subsets.sort()
+n = len(sub)
 
-for i in subsets:
-    print(*i)
+for i in range(n):
+    for j in range(0, n-i-1):
+        if sub[j] > sub[j+1]:
+            sub[j], sub[j+1] = sub[j+1], sub[j]
+
+
+fil = [m for m in sub if m]
+
+print(*fil)

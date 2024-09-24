@@ -1,0 +1,29 @@
+s1 = input()
+s2 = input()
+
+def bubble_sort(s):
+    arr = list(s)  
+    n = len(arr)
+    for i in range(n):
+        for j in range(0, n - i - 1):
+            if arr[j] > arr[j + 1]:
+                arr[j], arr[j + 1] = arr[j + 1], arr[j]
+    return "".join(arr)
+
+if len(s1) > len(s2):
+    result = False
+else:
+    left = 0
+    right = len(s1)
+    sorted_s1 = bubble_sort(s1) 
+    
+    result = False
+    while right != len(s2) + 1:
+        string = s2[left:right]
+        if bubble_sort(string) == sorted_s1:
+            result = True
+            break
+        left += 1
+        right += 1
+
+print(str(result).lower())
